@@ -60,13 +60,13 @@ class OrderSheetLogger:
             payment,
         ]
         try:
-            self.worksheet.insert_row(row, index=2, value_input_option='USER_ENTERED')
+            self.worksheet.append_row(row, value_input_option='USER_ENTERED')
         except Exception as e:
             # thử.retry hoặc log lỗi vào file local
             print(f"Error when appending to sheet: {e}")
             # optional: sleep rồi thử lại
             time.sleep(5)
             try:
-                self.worksheet.insert_row(row, index=2, value_input_option='USER_ENTERED')
+                self.worksheet.append_row(row, value_input_option='USER_ENTERED')
             except Exception as e2:
                 print(f"Second attempt failed: {e2}")
